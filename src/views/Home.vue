@@ -3,7 +3,7 @@
     <hr />
     <div v-for="section in info" :key="section.index">
       <div
-        class="card col-sm-6"
+        class="card col-xs-12 col-sm-12 col-md-6 col-lg-6"
         v-for="earthquake in section.features"
         :key="earthquake.mag"
       >
