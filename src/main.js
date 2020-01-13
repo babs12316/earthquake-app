@@ -4,6 +4,7 @@ import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import * as VueGoogleMaps from "vue2-google-maps";
+import "bootstrap/dist/css/bootstrap.css";
 
 Vue.use(VueGoogleMaps, {
   load: {

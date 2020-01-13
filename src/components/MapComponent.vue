@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="map">
     <GmapMap
       :center="center"
-      :zoom="7"
+      :zoom="12"
       map-type-id="terrain"
-      style="width: 500px; height: 300px"
+      style="width: 400px; height: 300px"
     >
       <GmapMarker
         :key="index"
@@ -27,12 +27,12 @@ export default {
   },
   data() {
     return {
-      center: { lat: 18.186066, lng: 76.041939 },
+      center: { lat: this.xlat, lng: this.ylng },
       markers: [
         {
           position: {
-            lat: 18.186066,
-            lng: 76.041939
+            lat: this.xlat,
+            lng: this.ylng
           }
         }
       ],
@@ -43,4 +43,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#terrain {
+  width: 400px;
+  height: 300px;
+}
+.map {
+  margin: auto;
+  display: inline-block;
+}
+</style>

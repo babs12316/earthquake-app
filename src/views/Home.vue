@@ -1,13 +1,18 @@
 <template>
-  <div>
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <div class="card" v-for="section in info" :key="section.index">
+  <div class="container-fluid">
+    <hr />
+    <div v-for="section in info" :key="section.index">
       <div
-        class="card"
+        class="card col-sm-6"
         v-for="earthquake in section.features"
         :key="earthquake.mag"
       >
-        {{ earthquake.properties.mag }}
+        <!--location of the epicenter lang & lat -->
+        <MapComponent
+          :ylng="earthquake.geometry.coordinates[0]"
+          :xlat="earthquake.geometry.coordinates[1]"
+        ></MapComponent>
+        <br />
         <!-- Place -->
         <PlaceComponent :place="earthquake.properties.place"></PlaceComponent>
         <!-- Time -->
@@ -26,14 +31,7 @@
         <OccuranceUrlComponent
           :url="earthquake.properties.url"
         ></OccuranceUrlComponent>
-        <!--location of the epicenter lang & lat -->
-        <MapComponent
-          :xlat="earthquake.geometry.coordinates[0]"
-          :ylng="earthquake.geometry.coordinates[1]"
-        ></MapComponent>
-        {{ earthquake.geometry.coordinates[0] }},{{
-          earthquake.geometry.coordinates[1]
-        }}
+        <hr />
       </div>
     </div>
   </div>
@@ -76,3 +74,11 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.card {
+  padding: 10px;
+  margin-bottom: 20px;
+  float: left;
+  border: none;
+}
+</style>
