@@ -1,13 +1,12 @@
 <template>
   <div>
-    {{ alerttype }}
- <!--   <button v-on:click="$emit('enlarge-text', 0.1)">
-      Enlarge text
-    </button>-->
+    <h6>Alert Type</h6>
     <select v-model="alerttype" v-on:change="$emit('alerttype', alerttype)">
-      <option disabled value="">Please select one</option>
-      <option value="yellow">Yellow</option>
+      <option :value="null" disabled>Select Alert Type</option>
       <option value="green">Green</option>
+      <option value="orange">Orange</option>
+      <option value="yellow">Yellow</option>
+      <option value="all">All</option>
     </select>
   </div>
 </template>

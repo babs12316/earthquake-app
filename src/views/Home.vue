@@ -76,9 +76,12 @@ export default {
   methods: {
     updateAlertType: function(alertvalue) {
       this.details = this.info; //get original Json
-      this.details = this.details.filter(
-        detail => detail.properties.alert == alertvalue
-      );
+      if (alertvalue != "all") {
+        //Do not filter json if 'All' option selected
+        this.details = this.details.filter(
+          detail => detail.properties.alert == alertvalue
+        );
+      }
     }
   },
   components: {
