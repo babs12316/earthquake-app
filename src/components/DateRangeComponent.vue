@@ -4,8 +4,8 @@
     <div v-on:click="$emit('daterange', daterange)">
       <VueSlideBar
         v-model="daterange"
-        :min="0"
-        :max="30"
+        :min="min"
+        :max="max"
         :processStyle="slider.processStyle"
         :lineHeight="slider.lineHeight"
         :tooltipStyles="{
@@ -14,9 +14,8 @@
         }"
       >
       </VueSlideBar>
-      Earthquake occured on or before{{
-        new Date(Date.now() - 24 * 60 * 60 * 1000 * daterange)
-      }}
+      Earthquake occured on or before
+      {{ new Date(Date.now() - 24 * 60 * 60 * 1000 * daterange) }}
     </div>
   </div>
 </template>
@@ -28,6 +27,8 @@ export default {
   data() {
     return {
       daterange: 0,
+      min:0,
+      max:30,
       slider: {
         lineHeight: 10,
         processStyle: {

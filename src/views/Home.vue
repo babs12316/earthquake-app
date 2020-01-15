@@ -16,8 +16,14 @@
           v-on:daterange="updateDaterange($event)"
         ></DateRangeComponent>
       </div>
+      <div class="col-sm-2">
+        <MagnitudeSortComponent
+          v-on:magsort="sortMag($event)"
+        ></MagnitudeSortComponent>
+      </div>
     </div>
     <hr />
+
     <div
       v-for="earthquake in details"
       :key="earthquake.index"
@@ -63,6 +69,7 @@ import MapComponent from "@/components/MapComponent.vue";
 import AlertFilterComponent from "@/components/AlertFilterComponent.vue";
 import MagnitudeRangeComponent from "@/components/MagnitudeRangeComponent.vue";
 import DateRangeComponent from "@/components/DateRangeComponent.vue";
+import MagnitudeSortComponent from "@/components/MagnitudeSortComponent.vue";
 
 const axios = require("axios");
 export default {
@@ -71,9 +78,12 @@ export default {
     return {
       info: null,
       details: null,
+      info1: [],
+      test: null,
       alertfilter: new RegExp(".")
     };
   },
+
   mounted() {
     axios
       .get(
@@ -85,6 +95,7 @@ export default {
           (this.details = response.data.features)
       );
   },
+
   methods: {
     updateAlertType: function(alertvalue) {
       this.details = this.info; //get original Json
@@ -102,12 +113,22 @@ export default {
       );
     },
     updateDaterange: function(daterange) {
-      console.log(new Date(Date.now() - 24 * 60 * 60 * 1000 * daterange));
       this.details = this.info;
       this.details = this.details.filter(
         detail =>
           detail.properties.time <= Date.now() - 24 * 60 * 60 * 1000 * daterange
       );
+    },
+    sortMag: function(sorttype) {
+      console.log(sorttype);
+      this.details = this.info;
+      this.details.sort(function(a, b) {
+        if (sorttype == "asc") {
+          return a.properties.mag - b.properties.mag;
+        } else if (sorttype == "desc") {
+          return b.properties.mag - a.properties.mag;
+        }
+      });
     }
   },
   components: {
@@ -120,7 +141,8 @@ export default {
     MapComponent,
     AlertFilterComponent,
     MagnitudeRangeComponent,
-    DateRangeComponent
+    DateRangeComponent,
+    MagnitudeSortComponent
   }
 };
 </script>
