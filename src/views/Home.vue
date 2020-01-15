@@ -1,10 +1,20 @@
 <template>
   <div class="container-fluid">
-    <div class="filters">
+    <div class="row filters">
       <div class="col-sm-2">
         <AlertFilterComponent
           v-on:alerttype="updateAlertType($event)"
         ></AlertFilterComponent>
+      </div>
+      <div class="col-sm-2">
+        <MagnitudeRangeComponent
+          v-on:magrange="updateMagrange($event)"
+        ></MagnitudeRangeComponent>
+      </div>
+      <div class="col-sm-2">
+        <DateRangeComponent
+          v-on:daterange="updateDaterange($event)"
+        ></DateRangeComponent>
       </div>
     </div>
     <hr />
@@ -51,6 +61,8 @@ import TsunamiComponent from "@/components/TsunamiComponent.vue";
 import OccuranceUrlComponent from "@/components/OccuranceUrlComponent.vue";
 import MapComponent from "@/components/MapComponent.vue";
 import AlertFilterComponent from "@/components/AlertFilterComponent.vue";
+import MagnitudeRangeComponent from "@/components/MagnitudeRangeComponent.vue";
+import DateRangeComponent from "@/components/DateRangeComponent.vue";
 
 const axios = require("axios");
 export default {
@@ -82,6 +94,20 @@ export default {
           detail => detail.properties.alert == alertvalue
         );
       }
+    },
+    updateMagrange: function(magrange) {
+      this.details = this.info;
+      this.details = this.details.filter(
+        detail => detail.properties.mag < magrange
+      );
+    },
+    updateDaterange: function(daterange) {
+      console.log(new Date(Date.now() - 24 * 60 * 60 * 1000 * daterange));
+      this.details = this.info;
+      this.details = this.details.filter(
+        detail =>
+          detail.properties.time <= Date.now() - 24 * 60 * 60 * 1000 * daterange
+      );
     }
   },
   components: {
@@ -92,7 +118,9 @@ export default {
     TsunamiComponent,
     OccuranceUrlComponent,
     MapComponent,
-    AlertFilterComponent
+    AlertFilterComponent,
+    MagnitudeRangeComponent,
+    DateRangeComponent
   }
 };
 </script>
