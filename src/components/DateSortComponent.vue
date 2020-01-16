@@ -13,11 +13,17 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+h6 {
+  font-weight: bold;
+  color: slategray;
+}
 .datesort {
   border: 1px solid gray;
-  margin: 55px;
 }
 .datesort span:hover {
   cursor: pointer;
+}
+.datesort span:focus {
+  background: 1px solid gray;
 }
 </style>

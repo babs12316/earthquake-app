@@ -24,7 +24,7 @@ import VueSlideBar from "vue-slide-bar";
 export default {
   data() {
     return {
-      magrange: 10,
+      magrange: 1,
       slider: {
         lineHeight: 10,
         processStyle: {
@@ -39,7 +39,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+h6 {
+  margin-bottom: -10px;
+  font-weight: bold;
+  color: slategray;
+}
 div#wrap {
-  padding-top: 20px;
+  padding-top: 0px;
+  .vue-slide-bar {
+    height: 20px !important;
+  }
 }
 </style>

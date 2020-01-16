@@ -13,9 +13,12 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+h6 {
+  font-weight: bold;
+  color: slategray;
+}
 .magsort {
   border: 1px solid gray;
-  margin: 55px;
 }
 .magsort span:hover {
   cursor: pointer;

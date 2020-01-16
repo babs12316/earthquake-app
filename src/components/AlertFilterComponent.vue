@@ -22,4 +22,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h6 {
+  font-weight: bold;
+  color: slategray;
+}
+</style>

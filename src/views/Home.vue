@@ -1,60 +1,73 @@
 <template>
   <div class="container-fluid">
-    <div class="row filters">
-      <div class="col-sm-2">
-        <AlertFilterComponent
-          v-on:alerttype="updateAlertType($event)"
-        ></AlertFilterComponent>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3">
+        <div class="row filters">
+          <div class="col-sm-12">
+            <AlertFilterComponent
+              v-on:alerttype="updateAlertType($event)"
+            ></AlertFilterComponent>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <br />
+            <MagnitudeRangeComponent
+              v-on:magrange="updateMagrange($event)"
+            ></MagnitudeRangeComponent>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <br />
+            <DateRangeComponent
+              v-on:daterange="updateDaterange($event)"
+            ></DateRangeComponent>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <br />
+            <MagnitudeSortComponent
+              v-on:magsort="sortMag($event)"
+            ></MagnitudeSortComponent>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <br />
+            <DateSortComponent
+              v-on:datesort="dateMag($event)"
+            ></DateSortComponent>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-2">
-        <MagnitudeRangeComponent
-          v-on:magrange="updateMagrange($event)"
-        ></MagnitudeRangeComponent>
-      </div>
-      <div class="col-sm-2">
-        <DateRangeComponent
-          v-on:daterange="updateDaterange($event)"
-        ></DateRangeComponent>
-      </div>
-      <div class="col-sm-2">
-        <MagnitudeSortComponent
-          v-on:magsort="sortMag($event)"
-        ></MagnitudeSortComponent>
-      </div>
-      <div class="col-sm-2">
-        <DateSortComponent v-on:datesort="dateMag($event)"></DateSortComponent>
-      </div>
-    </div>
-    <hr />
-
-    <div
-      v-for="earthquake in details"
-      :key="earthquake.index"
-      class="card col-xs-12 col-sm-12 col-md-6 col-lg-6"
-    >
-      <!--location of the epicenter lang & lat -->
-      <MapComponent
-        :ylng="earthquake.geometry.coordinates[0]"
-        :xlat="earthquake.geometry.coordinates[1]"
-      ></MapComponent>
-      <br />
-      <!-- Place -->
-      <PlaceComponent :place="earthquake.properties.place"></PlaceComponent>
-      <!-- Time -->
-      <TimeComponent :time="earthquake.properties.time"></TimeComponent>
-      <!-- Magnititude -->
-      <MagnitudeComponent :mag="earthquake.properties.mag"></MagnitudeComponent>
-      <!-- Alert -->
-      <AlertComponent :alert="earthquake.properties.alert"></AlertComponent>
-      <!-- tsunami -->
-      <TsunamiComponent
-        :tsunami="earthquake.properties.tsunami"
-      ></TsunamiComponent>
-      <!-- earthquake occurrence page -->
-      <OccuranceUrlComponent
-        :url="earthquake.properties.url"
-      ></OccuranceUrlComponent>
       <hr />
+      <div class="col-xs-12 col-sm-12 col-md-9">
+        <div
+          v-for="earthquake in details"
+          :key="earthquake.index"
+          class="card col-xs-12 col-sm-12 col-md-6 col-lg-6"
+        >
+          <!--location of the epicenter lang & lat -->
+          <MapComponent
+            :ylng="earthquake.geometry.coordinates[0]"
+            :xlat="earthquake.geometry.coordinates[1]"
+          ></MapComponent>
+          <br />
+          <!-- Place -->
+          <PlaceComponent :place="earthquake.properties.place"></PlaceComponent>
+          <!-- Time -->
+          <TimeComponent :time="earthquake.properties.time"></TimeComponent>
+          <!-- Magnititude -->
+          <MagnitudeComponent
+            :mag="earthquake.properties.mag"
+          ></MagnitudeComponent>
+          <!-- Alert -->
+          <AlertComponent :alert="earthquake.properties.alert"></AlertComponent>
+          <!-- tsunami -->
+          <TsunamiComponent
+            :tsunami="earthquake.properties.tsunami"
+          ></TsunamiComponent>
+          <!-- earthquake occurrence page -->
+          <OccuranceUrlComponent
+            :url="earthquake.properties.url"
+          ></OccuranceUrlComponent>
+          <hr />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -167,5 +180,9 @@ export default {
   margin-bottom: 20px;
   float: left;
   border: none;
+}
+.filters {
+  padding: 10%;
+  border-right: 1px solid #ccc;
 }
 </style>

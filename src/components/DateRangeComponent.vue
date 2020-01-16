@@ -14,8 +14,10 @@
         }"
       >
       </VueSlideBar>
-      Earthquake occured on or before
-      {{ new Date(Date.now() - 24 * 60 * 60 * 1000 * daterange) }}
+      <p>
+        Earthquake occured on or before
+        {{ new Date(Date.now() - 24 * 60 * 60 * 1000 * daterange) }}
+      </p>
     </div>
   </div>
 </template>
@@ -27,8 +29,8 @@ export default {
   data() {
     return {
       daterange: 0,
-      min:0,
-      max:30,
+      min: 0,
+      max: 30,
       slider: {
         lineHeight: 10,
         processStyle: {
@@ -43,6 +45,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+h6 {
+  margin-bottom: -10px;
+  font-weight: bold;
+  color: slategray;
+}
+p {
+  font-size: 12px;
+  color: slategray;
+}
 div#wrap {
   padding-top: 20px;
 }

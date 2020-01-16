@@ -52,4 +52,7 @@ export default {
   margin: auto;
   display: inline-block;
 }
+.vue-map-container {
+  display: table-cell;
+}
 </style>
