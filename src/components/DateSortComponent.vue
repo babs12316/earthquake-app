@@ -2,14 +2,34 @@
   <div>
     <h6>Date Sort</h6>
     <div class="datesort">
-      <span v-on:click="$emit('datesort', 'asc')">Asc</span> |
-      <span v-on:click="$emit('datesort', 'desc')">desc</span>
+      <span
+        :class="[isFirstSpanActive ? 'active' : '']"
+        @click="updateFirstSpanClass"
+        v-on:click="$emit('datesort', 'asc')"
+        >Asc</span
+      >
+      |
+      <span
+        :class="[isSecondSpanActive ? 'active' : '']"
+        @click="updateSecondSpanClass"
+        v-on:click="$emit('datesort', 'desc')"
+        >Desc</span
+      >
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import SortMixin from "../mixins/SortMixin";
+export default {
+  data: function() {
+    return {
+      isFirstSpanActive: false,
+      isSecondSpanActive: false
+    };
+  },
+  mixins: [SortMixin]
+};
 </script>
 
 <style lang="scss" scoped>
@@ -23,7 +43,9 @@ h6 {
 .datesort span:hover {
   cursor: pointer;
 }
-.datesort span:focus {
-  background: 1px solid gray;
+.active {
+  background: slategray;
+  color: #fff;
+  font-weight: bold;
 }
 </style>
