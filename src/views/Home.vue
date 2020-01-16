@@ -21,6 +21,9 @@
           v-on:magsort="sortMag($event)"
         ></MagnitudeSortComponent>
       </div>
+      <div class="col-sm-2">
+        <DateSortComponent v-on:datesort="dateMag($event)"></DateSortComponent>
+      </div>
     </div>
     <hr />
 
@@ -70,6 +73,7 @@ import AlertFilterComponent from "@/components/AlertFilterComponent.vue";
 import MagnitudeRangeComponent from "@/components/MagnitudeRangeComponent.vue";
 import DateRangeComponent from "@/components/DateRangeComponent.vue";
 import MagnitudeSortComponent from "@/components/MagnitudeSortComponent.vue";
+import DateSortComponent from "@/components/DateSortComponent.vue";
 
 const axios = require("axios");
 export default {
@@ -129,6 +133,16 @@ export default {
           return b.properties.mag - a.properties.mag;
         }
       });
+    },
+    dateMag: function(sorttype) {
+      this.details = this.info;
+      this.details.sort(function(a, b) {
+        if (sorttype == "asc") {
+          return a.properties.time - b.properties.time;
+        } else if (sorttype == "desc") {
+          return b.properties.time - a.properties.time;
+        }
+      });
     }
   },
   components: {
@@ -142,7 +156,8 @@ export default {
     AlertFilterComponent,
     MagnitudeRangeComponent,
     DateRangeComponent,
-    MagnitudeSortComponent
+    MagnitudeSortComponent,
+    DateSortComponent
   }
 };
 </script>
