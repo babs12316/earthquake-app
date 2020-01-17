@@ -19,8 +19,6 @@
 </template>
 
 <script>
-//import GmapMap from "vue2-google-maps/src/components/map";
-//import GmapMarker from "vue2-google-maps/src/components/marker";
 export default {
   name: "GoogleMaps",
   props: {
@@ -41,10 +39,6 @@ export default {
       places: [],
       currentPlace: null
     };
-  },
-  components: {
-   // GmapMap,
-   // GmapMarker
   }
 };
 </script>

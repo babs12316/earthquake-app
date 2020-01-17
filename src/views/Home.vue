@@ -137,7 +137,6 @@ export default {
       );
     },
     sortMag: function(sorttype) {
-      console.log(sorttype);
       this.details = this.info;
       this.details.sort(function(a, b) {
         if (sorttype == "asc") {

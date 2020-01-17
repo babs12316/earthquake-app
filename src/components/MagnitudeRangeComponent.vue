@@ -1,7 +1,7 @@
 <template>
   <div>
     <h6>Select Magnitude Range</h6>
-    <div  v-on:click="$emit('magrange', magrange)">
+    <div v-on:click="$emit('magrange', magrange)">
       <VueSlideBar
         v-model="magrange"
         :min="1"
