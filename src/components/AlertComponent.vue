@@ -1,5 +1,8 @@
 <template>
-  <div>alert type{{ alert }}</div>
+  <div>
+    <h6>alert type</h6>
+    {{ alert }}
+  </div>
 </template>
 
 <script>
@@ -11,4 +14,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h6 {
+  font-weight: bold;
+  color: slategray;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+</style>

@@ -11,5 +11,8 @@ describe("TimeComponent.vue", () => {
   it("props are passed correclty", () => {
     expect(wrapper.props("time")).toBe(123456);
   });
+  it("has h6 tag", () => {
+    expect(wrapper.contains("h6")).toBe(true);
+  });
  
 });

@@ -14,4 +14,7 @@ describe("PlaceComponent.vue", () => {
   it("has a h2 tag", () => {
     expect(wrapper.contains("h2")).toBe(true);
   });
+  it("has h6 tag", () => {
+    expect(wrapper.contains("h6")).toBe(true);
+  });
 });

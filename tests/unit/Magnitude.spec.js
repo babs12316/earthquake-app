@@ -10,4 +10,7 @@ describe("MagnitudeComponent.vue", () => {
   it("props are passed correclty", () => {
     expect(wrapper.props("mag")).toBe(2.789);
   });
+  it("has h6 tag", () => {
+    expect(wrapper.contains("h6")).toBe(true);
+  });
 });

@@ -10,4 +10,7 @@ describe("OccuranceURLComponent.vue", () => {
   it("props are passed correclty", () => {
     expect(wrapper.props("url")).toBe("https://wwww.test.com");
   });
+  it("has anchor tag", () => {
+    expect(wrapper.contains("a")).toBe(true);
+  });
 });
