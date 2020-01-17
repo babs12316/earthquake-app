@@ -9,5 +9,4 @@ describe("MagnitudeSortComponent.vue", () => {
   it("has a magsort class", () => {
     expect(wrapper.contains(".magsort")).toBe(true);
   });
-
 });
