@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h6>alert type</h6>
+    <h6>Alert type</h6>
     {{ alert }}
   </div>
 </template>
