@@ -8,6 +8,9 @@ For the responsive design, Bootstrap is used.
 Layout for the desktop view is divided in 2 vertical sections.
 One for Filters and other for Earthquake information.
 
+Filters will be applied on entire API data each time. That means
+only one filter will work at a time.
+
 Layout for the small devices has only one vertical section.
 
 vue-range-slider package is used for displaying slider filters.   

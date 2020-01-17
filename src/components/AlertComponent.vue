@@ -1,7 +1,7 @@
 <template>
   <div>
     <h6>Alert type</h6>
-    {{ alert }}
+    <span> {{ alert }} </span>
   </div>
 </template>
 
@@ -20,5 +20,8 @@ h6 {
   color: slategray;
   margin-top: 5px;
   margin-bottom: 0px;
+}
+span {
+  text-transform: capitalize;
 }
 </style>

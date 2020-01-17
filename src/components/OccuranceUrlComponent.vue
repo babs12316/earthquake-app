@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h6>Earthquake Occurance page</h6>
+    <h6>Earthquake occurance page</h6>
     <a :href="url">{{ url }}</a>
   </div>
 </template>
