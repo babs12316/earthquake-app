@@ -10,7 +10,7 @@ One for Filters and other for Earthquake information.
 
 Layout for the small devices has only one vertical section.
 
-vue-range-slider package is used for displaying slider filers.   
+vue-range-slider package is used for displaying slider filters.   
 
 Vue2-google-map package is used to display google maps.
 Google maps are shown in development mode.
